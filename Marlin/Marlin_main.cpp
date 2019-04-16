@@ -1306,7 +1306,7 @@ void get_available_commands() {
 bool get_target_extruder_from_command(const uint16_t code) {
   if (parser.seenval('T')) {
     const int8_t e = parser.value_byte();
-    if (DISABLED(MIXING_EXTRUDER) && e >= EXTRUDERS) {
+    if (e >= EXTRUDERS) {
       SERIAL_ECHO_START();
       SERIAL_CHAR('M');
       SERIAL_ECHO(code);
@@ -15519,7 +15519,7 @@ void loop() {
       if (++cmd_queue_index_r >= BUFSIZE) cmd_queue_index_r = 0;
     }
   }
-
+#if ENABLED(POWER_LOSS_RECOVERY)
   if (commands_in_queue == 0) {
     switch (powerloss.recovery) {
       default: break;
@@ -15599,7 +15599,7 @@ void loop() {
     enqueue_and_echo_command(tmp_y);
     powerloss.recovery = Rec_Idle;
   }
-    
+#endif //POWER_LOSS_RECOVERY mixer enabled hardcoded. fix later maybe?  
   endstops.event_handler();
   idle();
 }

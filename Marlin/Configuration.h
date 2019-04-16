@@ -134,7 +134,7 @@
 
 // This defines the number of extruders
 // :[1, 2, 3, 4, 5]
-#define EXTRUDERS 1
+#define EXTRUDERS 2
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -202,7 +202,7 @@
  *   - This implementation supports only a single extruder.
  *   - Enable DIRECT_MIXING_IN_G1 for Pia Taubert's reference implementation
  */
-#define MIXING_EXTRUDER
+//#define MIXING_EXTRUDER
 #if ENABLED(MIXING_EXTRUDER)
   #define MIXING_STEPPERS 2        // Number of steppers in your mixing extruder
   #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
@@ -290,8 +290,8 @@
  *
  * :{ '0': "Not used", '1':"100k / 4.7k - EPCOS", '2':"200k / 4.7k - ATC Semitec 204GT-2", '3':"Mendel-parts / 4.7k", '4':"10k !! do not use for a hotend. Bad resolution at high temp. !!", '5':"100K / 4.7k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '6':"100k / 4.7k EPCOS - Not as accurate as Table 1", '7':"100k / 4.7k Honeywell 135-104LAG-J01", '8':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT", '9':"100k / 4.7k GE Sensing AL03006-58.2K-97-G1", '10':"100k / 4.7k RS 198-961", '11':"100k / 4.7k beta 3950 1%", '12':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT (calibrated for Makibox hot bed)", '13':"100k Hisens 3950  1% up to 300°C for hotend 'Simple ONE ' & hotend 'All In ONE'", '20':"PT100 (Ultimainboard V2.x)", '51':"100k / 1k - EPCOS", '52':"200k / 1k - ATC Semitec 204GT-2", '55':"100k / 1k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '60':"100k Maker's Tool Works Kapton Bed Thermistor beta=3950", '66':"Dyze Design 4.7M High Temperature thermistor", '70':"the 100K thermistor found in the bq Hephestos 2", '71':"100k / 4.7k Honeywell 135-104LAF-J01", '147':"Pt100 / 4.7k", '1047':"Pt1000 / 4.7k", '110':"Pt100 / 1k (non-standard)", '1010':"Pt1000 / 1k (non standard)", '-3':"Thermocouple + MAX31855 (only for sensor 0)", '-2':"Thermocouple + MAX6675 (only for sensor 0)", '-1':"Thermocouple + AD595",'998':"Dummy 1", '999':"Dummy 2" }
  */
-#define TEMP_SENSOR_0 1
-#define TEMP_SENSOR_1 0
+#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_1 5
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0
@@ -330,8 +330,8 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define HEATER_0_MAXTEMP 275
-#define HEATER_1_MAXTEMP 275
+#define HEATER_0_MAXTEMP 285
+#define HEATER_1_MAXTEMP 285
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
 #define HEATER_4_MAXTEMP 275
@@ -598,7 +598,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.8, 400, 430, 430 }   //Orig { 80, 80, 4000, 500 } 93*2 = DRV8825 1/32 Stepps
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.3, 80.8, 400, 425, 438 }   //Orig { 80, 80, 4000, 500 } 93*2 = DRV8825 1/32 Stepps
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -768,7 +768,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER -38 //-37  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER -2  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.2 // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -.74 // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -850,8 +850,8 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
-#define INVERT_E1_DIR true
+#define INVERT_E0_DIR false
+#define INVERT_E1_DIR false
 #define INVERT_E2_DIR true
 #define INVERT_E3_DIR true
 #define INVERT_E4_DIR true
@@ -1015,7 +1015,7 @@
 #if ENABLED(AUTO_BED_LEVELING_LINEAR) || ENABLED(AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 4
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Set the boundaries for probing (where the probe can reach).
@@ -1955,5 +1955,65 @@
 //
 // With this option servos are powered only during movement, then turned off to prevent jitter.
 //#define DEACTIVATE_SERVOS_AFTER_MOVE
+
+/*
+http://www.geeetech.com/forum/viewtopic.php?t=61618
+1. Install and Set the height of your BL/3d touch,
+a. Home the Z axis
+b Lower nozzle to the bed (if nozzle doesnt go to bed fully see section 10). And attach touch sensor to left hand side. Do not tighten yet. (you may have to CUT the sensor mounting screws shorter as they can interfere with access the screws to the printer)
+c. Ensure the sensor pin is UP (if you have difficulty in keeping the sensor up plug it in as per step E)
+d. Get a ruler or item around 2-3mm thick and slide it under the sensor. Important to measure the thickness of the item your using fo rStep 5.
+e. Tighten the sensor up. And remove the ruler.
+f. Plug the pins in the back as per photo above.
+
+2. Go to your PC or MAC and download the firmware from https://github.com/Geeetech3D/Prusa_I3_3Dprinter. Extract the A10M folder out.
+3. 3. Copy the Configuration H file from the folder "Prusa_I3_3Dprinter/A10M_marlin1.1.8/Configuration and hex file/3d touch/"and place it in the Main marlin folder Prusa_I3_3Dprinter/A10M_marlin1.1.8/Marlin/
+4. Download Arduino 1.8.5 (IMPORTANT 1.8.5 VERSION ONLY). https://www.arduino.cc/en/Main/OldSoftw ... s#previous Install and setup as follows
+a. Select COM PORT (refer to geeetech Wiki for USB drivers)
+b. Select board as ARDUINO/GENUINO MEGA OR Mega 2650
+c. Check processor is ATMEGA 2560
+d. File Open and navigate to the MARLIN.INOfile in the Prusa_I3_3Dprinter/A10M_marlin1.1.8/Marlin/ folder
+
+5. Locate the CONFIGURATION.h Tab and find the line (Z_PROBE_OFFSET_FROM_EXTRUDER) Set the Minus figure to the size of your Ruler/spacer used in step 1c (ie your ruler was 2.5mm thick the line will read.
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -2.5 //-0.50 // Z offset: -below +above [the nozzle]
+6. On the line X_PROBE_OFFSET_FROM_EXTRUDER ensure it reads as: #define X_PROBE_OFFSET_FROM_EXTRUDER -40 // X offset: -left +right [of the nozzle] (distance of probe from nozzle)
+7. Upload the amended firmware to the Printer.
+8. Check printer control display under CONTROL to check there is a BLtouch Menu. (if no re check steps 2-7 )
+DO NOT LEVEL BED OR USE ANY MENU FUNCTIONS JUST YET
+9. Check that the home and probe works. Either use Z home in the printer control or via Arduino as below. The bed should centre and probe will deploy. The nozzle should not grind into the bed. If it does recheck Step 1 and step 5.
+a. In Arduino Click TOOLS and SERIAL MONIITOR.
+b. Type in G28 and send (sets home)
+10. SET the Z offset on the Printer BED.
+a. In Arduino Click TOOLS and SERIAL MONIITOR.
+b. If med isn’t sitting at home do                    G28
+c. To Reset OFFSet type in                            M851 Z0
+d. Write settings M500 and set Active                 M500 - M501
+e. Go to True Zero                                    G1 F60 Z0
+f. Switch off soft endtops                            M211 S0
+g. Using the piece of paper technique (under nozzle not sensor) align the nozzle to the bed (using the move Z in printer control at .1 increments) NOTE offset on display EG-1.32)
+h. Set the Z offset to that number.                   M851 Z-1.32
+i. Turn ON soft Endstops.                             M211 S1
+j. Write settings M500 and set Active                 M500 - M501
+k. Set to Home again                                  G28
+l. Test by checking true zero. G1 F60 Z0 printer nozzle should be at correct height above bed.
+11. SET SLICER GCODE. In your slicer select printer settings and Start Gcode after the G28 entry insert a new line with G29 :Bed Level. (make sure there isn’t a G28 AFTER this line)
+12. Run a test print from an item you compiled in the slicer after step 11. Printer should set home, then level over 9 places on the bed and then print.
+
+3Dtouch commands:
+M280 P0 S10 ; Pin Down
+M280 P0 S90 ; Pin Up
+M280 P0 S120 ; Self Test
+M280 P0 S160 ; Reset Error
+
+Yellow - reset
+black - mosi
+red - sck
+green - miso
+
+Updates-
+fans
+capricorn bowden tube
+all metal hot end
+*/
 
 #endif // CONFIGURATION_H
