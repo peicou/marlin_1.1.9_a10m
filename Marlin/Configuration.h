@@ -213,7 +213,7 @@
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
-//#define HOTEND_OFFSET_X {0.0, 20.00} // (in mm) for each extruder, offset of the hotend on the X axis
+#define HOTEND_OFFSET_X {0.0, 20.0} // (in mm) for each extruder, offset of the hotend on the X axis
 //#define HOTEND_OFFSET_Y {0.0, 5.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // @section machine
@@ -623,9 +623,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves        //1.0.3 3000
-#define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts                          //1.0.3 3000
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves //1.0.3 3000
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves        //1.0.3 3000
+#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts                          //1.0.3 3000
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves //1.0.3 3000
 
 /**
  * Default Jerk (mm/s)
