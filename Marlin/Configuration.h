@@ -520,11 +520,11 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
+//#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -664,7 +664,7 @@
  *
  * Enable this option for a probe connected to the Z Min endstop pin.
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 /**
  * Z_MIN_PROBE_ENDSTOP
@@ -711,8 +711,8 @@
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
  */
-#define Z_PROBE_SERVO_NR 0   // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES {10,90}  // Z Servo Deploy and Stow angles
+//#define Z_PROBE_SERVO_NR 0   // Defaults to SERVO 0 connector.
+//#define Z_SERVO_ANGLES {10,90}  // Z Servo Deploy and Stow angles
 
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
@@ -734,7 +734,7 @@
   //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
 #endif
 //#define PROBING_FANS_OFF          // Turn fans off when probing
-#define DELAY_BEFORE_PROBING 100  // (ms) To prevent vibrations from triggering piezo sensors
+//#define DELAY_BEFORE_PROBING 100  // (ms) To prevent vibrations from triggering piezo sensors
 
 // A probe that is deployed and stowed with a solenoid pin (SOL1_PIN)
 //#define SOLENOID_PROBE
@@ -780,7 +780,7 @@
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 
 // Arif hack: Tilt compensation
-#define TILT_COMPENSATION
+//#define TILT_COMPENSATION
 #if ENABLED(TILT_COMPENSATION)
    #define X_TILT_COMP 0 // lower value - left bed edge higher
    #define Y_TILT_COMP 0 // - front bed edge higher
@@ -817,7 +817,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+//#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
 // :{ 0:'Low', 1:'High' }
@@ -880,7 +880,7 @@
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -10
 #define Y_MIN_POS -5
-#define Z_MIN_POS -5
+#define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE 
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 260
@@ -922,7 +922,7 @@
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  * By default the firmware assumes HIGH=FILAMENT PRESENT.
  */
-#define FILAMENT_RUNOUT_SENSOR
+//#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define NUM_RUNOUT_SENSORS   2     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #define FIL_RUNOUT_INVERTING true // set to true to invert the logic of the sensor.
@@ -970,7 +970,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -978,7 +978,7 @@
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-#define RESTORE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1115,7 +1115,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-#define LCD_BED_LEVELING
+//#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MBL_Z_STEP 0.025    // Step size while manually probing Z axis.
@@ -1126,7 +1126,7 @@
 #define LEVEL_BED_CORNERS
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET 30    // (mm) An inset for corner leveling
-  //#define LEVEL_CENTER_TOO        // Move to the center after the last corner
+  #define LEVEL_CENTER_TOO        // Move to the center after the last corner
 #endif
 
 /**
